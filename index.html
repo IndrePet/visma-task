@@ -8,7 +8,7 @@
     <title>VISMA task by IndreP</title>
   </head>
   <body>
-    <header>
+    <header class="flex">
       <h1>VISMA Internship Task</h1>
       <p>
         Implemented by
@@ -18,9 +18,24 @@
 
     <main>
       <div class="container">
-        <div class="row">
-          <div class="left"></div>
-          <div class="right"></div>
+        <div class="row grid center">
+          <div class="left flex center"></div>
+          <div class="right flex">
+            <div class="toolbar flex">
+              <h3>Choose filters</h3>
+              <div class="wrapper flex">
+                <label for="greyscale">Greyscale:</label>
+                <input type="checkbox" name="greyscale" id="greyscale" />
+                <label for="blur">Blur:</label>
+                <input type="range" name="blur" id="blur" value="0" />
+              </div>
+            </div>
+            <div class="img-large"></div>
+            <div class="img-info">
+              <p>Author: <span id="author"></span></p>
+              <p>Image size: <span id="img-size"></span></p>
+            </div>
+          </div>
         </div>
       </div>
     </main>
