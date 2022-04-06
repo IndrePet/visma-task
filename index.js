@@ -22,6 +22,8 @@ const loadThumbnails = (data) => {
   imgThumb.classList.add('thumbnail');
   containerLeft.appendChild(imgThumb);
 
+  imgThumb.addEventListener('contextmenu', (event) => event.preventDefault());
+
   imgThumb.addEventListener('click', () => {
     containerRight.innerHTML = '';
     sizeInfo.innerText = '';
@@ -64,6 +66,8 @@ class RightSide {
     containerRight.appendChild(imgLarge);
     authorInfo.innerText = `${this.author}`;
     sizeInfo.innerText = `${this.width}px / ${this.height}px`;
+
+    imgLarge.addEventListener('contextmenu', (event) => event.preventDefault());
   }
 
   newRender(blurValue = 0) {
