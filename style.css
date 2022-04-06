@@ -6,6 +6,10 @@
     font-family: Arial, sans-serif;
 }
 
+body {
+    overflow: hidden;
+}
+
 /* UTILITY CLASSES */
 .grid {
     display: grid;
@@ -13,6 +17,7 @@
 
 .flex {
     display: flex;
+    flex-shrink: 0;
 }
 
 .center {
@@ -22,7 +27,7 @@
 
 /* HEADER STYLES */
 
-header {
+.header {
     flex-direction: column;
     align-items: flex-end;
     height: 10vh;
@@ -30,13 +35,15 @@ header {
     gap: .2rem;
     padding: .5rem;
     box-shadow: 0 0 4px rgb(128, 128, 128);
+    position: relative;
+    z-index: 2;
 }
 
-h1 {
+.header > h1 {
     font-size: 1.4rem;
 }
 
-p {
+.header > p {
     font-size: .8rem;
 }
 
@@ -48,44 +55,89 @@ p {
 
 .container > .row {
     grid-template-columns: 1fr;
-    grid-template-rows: 30% 1fr;
+    grid-template-rows: auto 1fr;
     height: 100%;
 }
+
+/* LEFT SIDE OF MAIN */
 
 .left{
-    background: pink;
-    flex-shrink: 0;
     height: 100%;
     overflow: auto;
+    gap: .2rem;
 }
 
+.left::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+.left::-webkit-scrollbar-thumb {
+    background-color: #440a19;
+    border-radius: 10px;
+}
+.left::-webkit-scrollbar-track {
+    background-color: #f1e8ea;
+    border-radius: 10px;
+}
+
+.left > .thumbnail {
+    height: 200px;
+    width: 200px;
+    flex-shrink: 0;
+}
+
+.selected {
+    opacity: 0.5;
+}
+
+
+/* RIGHT SIDE OF MAIN */
 .right {
-    background:aquamarine;
     height: 100%;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.toolbar{
+.right > .toolbar{
     background-color: #f1e8ea;
     justify-content: space-around;
     padding: .5rem;
 }
-.toolbar>.wrapper{
+.toolbar > .wrapper{
     align-items: center;
     justify-content: space-around;
     gap: 1rem
+}
+
+.img-large > .enlarged {
+    max-width: 60%;
+    max-height: 200px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .img-info {
     background-color: #f1e8ea;
 }
 
+.img-info > p > span {
+    font-weight: 600;
+}
+
 @media (min-width: 800px) {
     .container>.row {
-        grid-template-columns: 30% 1fr;
+        grid-template-columns: auto 1fr;
         grid-template-rows: 1fr;
         flex-direction: column;
         flex-wrap: wrap;
+    }
+
+    .left{
+        flex-direction: column;
+        flex-shrink: 0;
+    }
+    .img-large>.enlarged {
+        max-height: 400px;
     }
 }
