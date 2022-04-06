@@ -30,20 +30,27 @@ const loadThumbnails = (data) => {
 };
 
 /*
-Buggy on horizontal scroll
+Respoonsive infinite scroll
 */
-if (window.innerWidth > 800) {
-  console.log(window.innerWidth);
-  containerLeft.addEventListener("scroll", () => {
-    let imageLimit = 1;
+containerLeft.addEventListener("scroll", () => {
+  console.log("scroll");
+  let imageLimit = 1;
+  if (window.innerWidth > 800) {
     if (
       containerLeft.scrollHeight - containerLeft.offsetHeight <=
-      containerLeft.scrollTop
+      Math.ceil(containerLeft.scrollTop)
     ) {
       getImageList(++page, imageLimit);
     }
-  });
-}
+  } else {
+    if (
+      containerLeft.scrollWidth - containerLeft.offsetWidth <=
+      Math.ceil(containerLeft.scrollLeft)
+    ) {
+      getImageList(++page, imageLimit);
+    }
+  }
+});
 
 const toLarge = (id, width, height, author) => {
   let url = `https://picsum.photos/id/${id}/${width}/${height}`;
