@@ -1,10 +1,10 @@
-"use strict";
-const containerLeft = document.querySelector(".left");
-const containerRight = document.querySelector(".img-large");
-const authorInfo = document.querySelector("#author");
-const sizeInfo = document.querySelector("#img-size");
-const greyscale = document.querySelector("#greyscale");
-const blurSlider = document.querySelector("#blur");
+'use strict';
+const containerLeft = document.querySelector('.left');
+const containerRight = document.querySelector('.img-large');
+const authorInfo = document.querySelector('#author');
+const sizeInfo = document.querySelector('#img-size');
+const greyscale = document.querySelector('#greyscale');
+const blurSlider = document.querySelector('#blur');
 
 let apiPage = 1;
 
@@ -17,23 +17,23 @@ const getImageList = (apiPage, limit = 4) => {
 };
 
 const loadThumbnails = (data) => {
-  const imgThumb = document.createElement("img");
-  imgThumb.setAttribute("src", data.download_url);
-  imgThumb.classList.add("thumbnail");
+  const imgThumb = document.createElement('img');
+  imgThumb.setAttribute('src', data.download_url);
+  imgThumb.classList.add('thumbnail');
   containerLeft.appendChild(imgThumb);
 
-  imgThumb.addEventListener("click", () => {
-    containerRight.innerHTML = "";
-    sizeInfo.innerText = "";
-    authorInfo.innerText = "";
+  imgThumb.addEventListener('click', () => {
+    containerRight.innerHTML = '';
+    sizeInfo.innerText = '';
+    authorInfo.innerText = '';
     const rightSide = new RightSide(data);
     rightSide.toLarge(blurSlider.value);
 
-    greyscale.addEventListener("change", () => {
+    greyscale.addEventListener('change', () => {
       rightSide.newRender(blurSlider.value);
     });
 
-    blurSlider.addEventListener("change", () => {
+    blurSlider.addEventListener('change', () => {
       rightSide.newRender(blurSlider.value);
     });
   });
@@ -58,16 +58,16 @@ class RightSide {
     } else {
       this.url = `https://picsum.photos/id/${this.id}/${this.width}/${this.height}`;
     }
-    const imgLarge = document.createElement("img");
-    imgLarge.setAttribute("src", this.url);
-    imgLarge.classList.add("enlarged");
+    const imgLarge = document.createElement('img');
+    imgLarge.setAttribute('src', this.url);
+    imgLarge.classList.add('enlarged');
     containerRight.appendChild(imgLarge);
     authorInfo.innerText = `${this.author}`;
     sizeInfo.innerText = `${this.width}px / ${this.height}px`;
   }
 
   newRender(blurValue = 0) {
-    containerRight.innerHTML = "";
+    containerRight.innerHTML = '';
     this.toLarge(blurValue);
   }
 }
@@ -77,7 +77,7 @@ getImageList();
 /*
 Responsive infinite scroll
 */
-containerLeft.addEventListener("scroll", () => {
+containerLeft.addEventListener('scroll', () => {
   let imageLimit = 1;
   if (window.innerWidth > 800) {
     if (
