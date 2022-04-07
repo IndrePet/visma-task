@@ -17,7 +17,6 @@ body {
 
 .flex {
     display: flex;
-    flex-shrink: 0;
 }
 
 .center {
@@ -87,11 +86,6 @@ body {
     flex-shrink: 0;
 }
 
-.selected {
-    opacity: 0.5;
-}
-
-
 /* RIGHT SIDE OF MAIN */
 .right {
     height: 100%;
@@ -125,6 +119,7 @@ body {
     font-weight: 600;
 }
 
+/* MEDIAS */
 @media (min-width: 800px) {
     .container>.row {
         grid-template-columns: auto 1fr;
