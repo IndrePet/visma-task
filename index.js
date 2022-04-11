@@ -11,9 +11,9 @@ let apiPage = 1;
 /**
  * Imports the image list from API (Lorem picsum) and sends it to `loadThumbnails` function
  * @param {number} apiPage Number of the page images have to be fetched from
- * @param {number} limit Number of images that need to be fetched per request `default = 4`
+ * @param {number} limit Number of images that need to be fetched per request `default = 6`
  */
-const getImageList = (apiPage, limit = 4) => {
+const getImageList = (apiPage, limit = 6) => {
   fetch(`https://picsum.photos/v2/list?page=${apiPage}&limit=${limit}`)
     .then((response) => response.json())
     .then((data) => {
