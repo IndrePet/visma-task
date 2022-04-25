@@ -31,9 +31,10 @@ const getImageList = (apiPage, limit = 6) => {
  * @param {object} data parsed JSON object
  */
 const loadThumbnails = (data) => {
-  console.log(typeof data);
+  let imgUrl = data.download_url.split('/').reverse().slice(2).reverse().join('/');
+  imgUrl += '/200/200'
   const imgThumb = document.createElement('img');
-  imgThumb.setAttribute('src', data.download_url);
+  imgThumb.setAttribute('src', imgUrl);
   imgThumb.classList.add('thumbnail');
   containerLeft.appendChild(imgThumb);
 
@@ -79,13 +80,13 @@ class RightSide {
    */
   toLarge(blurValue) {
     if (greyscale.checked && parseInt(blurValue) === 0) {
-      this.url = `https://picsum.photos/id/${this.id}/${this.width}/${this.height}?grayscale`;
+      this.url = `https://picsum.photos/id/${this.id}/600/400?grayscale`;
     } else if (blurValue > 0 && !greyscale.checked) {
-      this.url = `https://picsum.photos/id/${this.id}/${this.width}/${this.height}?blur=${blurValue}`;
+      this.url = `https://picsum.photos/id/${this.id}/600/400?blur=${blurValue}`;
     } else if (greyscale.checked && blurValue > 0) {
-      this.url = `https://picsum.photos/id/${this.id}/${this.width}/${this.height}?grayscale&blur=${blurValue}`;
+      this.url = `https://picsum.photos/id/${this.id}/600/400?grayscale&blur=${blurValue}`;
     } else {
-      this.url = `https://picsum.photos/id/${this.id}/${this.width}/${this.height}`;
+      this.url = `https://picsum.photos/id/${this.id}/600/400`;
     }
     const imgLarge = document.createElement('img');
     imgLarge.setAttribute('src', this.url);

@@ -81,8 +81,6 @@ body {
 }
 
 .left > .thumbnail {
-    height: 200px;
-    width: 200px;
     flex-shrink: 0;
 }
 
